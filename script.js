@@ -2,8 +2,11 @@
 const todoForm = document.querySelector("#todo-form");
 const todoList = document.querySelector("#todo-list");
 
+
+const api_link = "https://jsonplaceholder.typicode.com/todos"
+
 // ### Loading Data from array ###
-fetch("https://jsonplaceholder.typicode.com/todos")
+fetch(api_link + '?_limit=10')
   .then((response) => response.json())
   .then((todos) => {
     todos.forEach((todo) => {
