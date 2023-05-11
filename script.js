@@ -15,7 +15,7 @@ fetch(api_link + '?_limit=10')
     });
   });
 
-// Function to create a new todo item
+// Function to create a new todo item.
 function createTodoItem(title, completed) {
   const todoItem = document.createElement("div");
   todoItem.classList.add("todo-item");
