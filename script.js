@@ -2,11 +2,30 @@
 const todoForm = document.querySelector("#todo-form");
 const todoList = document.querySelector("#todo-list");
 
+
+// ### Fetch todos from the API and add them to the todo list ###
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((response) => response.json())
+  .then((todos) => {
+    todos.forEach((todo) => {
+      createTodoItem(todo.title, todo.completed);
+      console.log(todo.id);
+      console.log(todo.title);
+      console.log(todo.completed);
+    });
+  });
+
+
 // Function to create a new todo item
-function createTodoItem(title) {
+function createTodoItem(title, completed) {
   const todoItem = document.createElement("div");
   todoItem.classList.add("todo-item");
   todoItem.textContent = title;
+
+  if (completed) {
+    todoItem.classList.add("done");
+  }
+
   todoList.appendChild(todoItem);
 
   // Add event listener for double click to delete the todo item
@@ -33,3 +52,7 @@ todoForm.addEventListener("submit", (event) => {
     alert("Please input a to do list.");
   }
 });
+
+
+
+
