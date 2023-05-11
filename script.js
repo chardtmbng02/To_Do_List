@@ -38,7 +38,7 @@ function createTodoItem(title, completed) {
 todoForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const title = document.querySelector("#title").value.trim();
-  
+
   if (title) {
     createTodoItem(title);
     document.querySelector("#title").value = "";
