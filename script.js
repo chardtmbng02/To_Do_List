@@ -9,9 +9,8 @@ fetch("https://jsonplaceholder.typicode.com/todos")
   .then((todos) => {
     todos.forEach((todo) => {
       createTodoItem(todo.title, todo.completed);
-      console.log(todo.id);
-      console.log(todo.title);
-      console.log(todo.completed);
+      console.log(todo.id , todo.title, todo.completed);
+
     });
   });
 
@@ -28,15 +27,18 @@ function createTodoItem(title, completed) {
 
   todoList.appendChild(todoItem);
 
-  // Add event listener for double click to delete the todo item
+
+   // Single click will set the list to completed = True and add class style "done"
+   todoItem.addEventListener("click", () => {
+    todoItem.classList.toggle("done");
+  });
+  
+  // double click will remove the todo list item.
   todoItem.addEventListener("dblclick", () => {
     todoList.removeChild(todoItem);
   });
 
-  // Add event listener for click to change color of the todo item
-  todoItem.addEventListener("click", () => {
-    todoItem.classList.toggle("done");
-  });
+ 
 }
 
 // Add event listener for form submission to create a new todo item
